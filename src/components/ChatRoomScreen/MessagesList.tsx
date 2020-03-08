@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { useInfiniteScroll } from '../../hooks/use-infinite-scroll';
 import { useAdjustedScroll } from '../../hooks/use-adjusted-scroll';
+import { parseISO } from 'date-fns';
 
 const Container = styled.div`
   position: relative;
@@ -141,7 +142,7 @@ const MessagesList: React.FC<MessagesListProps> = ({
           key={message.id}>
           <Contents data-testid="message-content">{message.content}</Contents>
           <Timestamp data-testid="message-date">
-            {format(message.createdAt, 'HH:mm')}
+            {format(parseISO(message.createdAt), 'HH:mm')}
           </Timestamp>
         </MessageItem>
       ))}

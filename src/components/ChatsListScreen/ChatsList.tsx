@@ -6,6 +6,7 @@ import { useCallback } from 'react';
 import { History } from 'history';
 import { useChatsQuery } from '../../graphql/types';
 import { useGetChatPrefetch } from '../ChatRoomScreen';
+import { parseISO } from 'date-fns';
 
 const Container = styled.div`
   height: calc(100% - 56px);
@@ -104,7 +105,7 @@ const ChatsList: React.FC<ChatsListProps> = ({ history }) => {
                     {chat.lastMessage.content}
                   </MessageContent>
                   <MessageDate data-testid="date">
-                    {format(chat.lastMessage.createdAt, 'HH:mm')}
+                    {format(parseISO(chat.lastMessage.createdAt), 'HH:mm')}
                   </MessageDate>
                 </React.Fragment>
               )}
